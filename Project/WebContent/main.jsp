@@ -25,6 +25,7 @@ a { text-decoration:none }
 		<div><a href="LoginSystem">오늘의 일기 쓰기</a></div>
 		<%}%>								
 		<div>책만들기</div>
+	
 	</div>
 	
 	

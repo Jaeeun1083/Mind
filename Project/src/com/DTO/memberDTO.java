@@ -22,6 +22,9 @@ public class memberDTO {
 		Name = name;
 		PhonNumber = phonNumber;
 	}
+	public memberDTO(String id, String pw, String name) {
+		// TODO Auto-generated constructor stub
+	}
 	public void setId(String id) {
 		Id = id;
 	}

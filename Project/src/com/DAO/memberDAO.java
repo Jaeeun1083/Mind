@@ -86,5 +86,30 @@ public class memberDAO {
 		}
 		return nick;
 	}
+
+	public int update(memberDTO dto) {
+		
+		int cnt = 0;
+		try {
+			getConnection();
+
+			String sql = "UPDATE MEMBER SET pw=?,name=? WHERE ID=?";
+			
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, dto.getPw());
+			psmt.setString(2, dto.getName());
+			psmt.setString(3, dto.getId());
+
+			cnt = psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return cnt;
+	}
+
 }
+
+
 
