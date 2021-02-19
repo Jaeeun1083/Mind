@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>오늘의 일기</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <!-- Custom styles for this template -->
+  <link href="css/coming-soon.min.css" rel="stylesheet">
+ 
+ <style>
+ body {overflow:hidden}
+  #toc-content {
+    display: none;
+  }
+  #toc-toggle {
+    cursor: pointer;
+    color: #2962ff;
+  }
+  #toc-toggle:hover {
+    text-decoration: underline;
+  }
+  ul{
+   list-style:none;
+   }
+  lnput{
+   background-color: #cd9557;
+  border-color: #cd9557;
+  } 
+  #btn_check{
+  font-size : 15px;
+  color : white;
+  background-color: #cd9557;
+  border-color: #cd9557;
+  border-radius: 5px 5px 5px 5px;}
+  
+  #join_us{
+  font-size : 15px;
+  color : white;
+  background-color: #cd9557;
+  border-color: #cd9557;
+  border-radius: 5px 5px 5px 5px;}
+  
+  #joinresult{
+  font-size : 15px;
+  color : white;
+  width: 100px;
+  heigt: 51.2px;
+  }
+  
+ 
+  
+ </style>
+</head>
+
+<body>
+
+  <div class="overlay"></div>
+  <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+    <source src="mp4/video1.mp4" type="video/mp4">
+  </video>
+
+  <div class="masthead" style="left:30%;">   
+    <div class="masthead-bg"></div>    
+    <div class="container h-100">    
+      <div class="row h-100">
+        <div class="col-12 my-auto">
+          <div class="masthead-content text-white py-5 py-md-0">           
+            <h1 class="mb-3">오늘의 일기</h1>
+            <p class="mb-5">
+              <strong>오늘 하루 </strong><br>당신의 이야기를 적어주세요</p>
+        	<form action="LoginService">
+            <div class="input-group input-group-newsletter" id="d1">
+              <div class="input-group input-group-newsletter">
+              <input type="text" class="form-control" placeholder="Enter ID..." aria-label="Enter ID...." aria-describedby="submit-button" name="id">
+              </div>
+              </div>
+              <div class="input-group-append" id="d2">
+  				<div class="input-group input-group-newsletter">
+              <input type="password" class="form-control" placeholder="Enter PassWord..." aria-label="Enter PassWord.." aria-describedby="submit-button" name="pw">           
+                <button class="btn btn-secondary" type="submit" id="submit-button">LogIn!</button>
+              </div>                  
+            </div>
+          </form>
+          	<div class="input-group input-group-newsletter" id="d3">                        
+                <span id="toc-toggle" onclick="openCloseToc()">
+                <button class="btn btn-secondary" type="submit" id="join">회원가입</button><span id="joinresult"></span>
+                </span>
+             	</div>
+             	<div>             	
+             	<span id="toc-content">	                    	
+             	<table>
+             	<ul>                
+				<tr>
+				<td>아이디:</td><td><input type="text"placeholder="ID을 입력하세요" name="id" id="id"></td></tr>
+				<tr><td><input type="button" value="ID중복체크" onclick="idCheck()" id="btn_check"></td>	
+				<td><span id="result"></span></td>
+				</tr>
+				<tr><td>비밀번호:</td><td><input type="password" placeholder="PW를 입력하세요" name="pw" id="pw"></td></tr>
+				<tr><td>이름:</td><td><input type="text" placeholder="이름을 입력하세요" name="name" id="name"></td></tr>
+				<tr><td>전화번호:</td><td><input type="text" placeholder="전화번호를 입력하세요" name="phonnumber" id="phonnumber"></td></tr>	
+				<tr><td><input type="submit" id="join_us" value="JoinUs"  onclick="joinsystem()"></td></tr>			   
+				</ul>		
+			</table>
+			</span>				
+			</div>
+            </div>                                
+          </div>
+        </div>
+      </div>
+    </div> 
+	<!-- Bootstrap core JavaScript -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>		
+<script>
+  function openCloseToc() {
+    if(document.getElementById('toc-content').style.display === 'block') {
+      document.getElementById('toc-content').style.display = 'none';     
+      document.getElementById('join').textContent = '회원 가입'; 
+      document.getElementById('d1').style.display = 'block';
+      document.getElementById('d2').style.display = 'block';
+      
+    } else {
+      document.getElementById('toc-content').style.display = 'block';
+      document.getElementById('join').textContent = '닫기';
+      document.getElementById('d1').style.display = 'none';    
+      document.getElementById('d2').style.display = 'none';
+      
+      
+    }
+  }
+</script>
+<script type="text/javascript">
+	function joinsystem(){
+	
+	var id= document.getElementById("id");
+	var pw= document.getElementById("pw");
+	var name= document.getElementById("name");
+	var phonnumber= document.getElementById("phonnumber");
+	
+	
+	$.ajax({
+		type : "post",
+		data : {"id":id.value,
+				"pw":pw.value,
+				"name":name.value,
+				"phone":phonnumber.value},
+		url : "JoinService",
+		dataType : "text",					
+		success : function(data){
+			var result = document.getElementById("joinresult");
+			if(document.getElementById('toc-content').style.display === 'block'){
+			document.getElementById('toc-content').style.display = 'none';
+			  document.getElementById('d1').style.display = 'block';
+		      document.getElementById('d2').style.display = 'block';
+			document.getElementById('join').textContent = '회원 가입';			
+			result.innerHTML = data +" 님환영합니다"}		
+			},
+		error : function(){
+			alert("전송실패")
+		}
+	});
+	
+}	
+	
+	
+	
+
+</script>
+<script type="text/javascript">
+		function idCheck(){	
+			var id = document.getElementById("id");
+			$.ajax({
+				type : "post",
+				data : {"id":id.value},
+				url : "idCheckService",
+				dataType : "text",
+				success : function(data){
+					//alert(data);
+					var result = document.getElementById("result");
+					if(data=="true"){
+						
+						result.innerHTML = "불가능한 ID입니다."
+					}else{
+						result.innerHTML = "가능한 ID입니다."
+						var btn = document.getElementById("btn_check");
+						btn.value="체크 완료";
+					}
+				},
+				error : function(){
+					alert("전송실패");
+				}
+					
+			});			
+		}	
+	</script>
+	
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom scripts for this template -->
+  <script src="js/coming-soon.min.js"></script>
+
+</body>
+
+</html>

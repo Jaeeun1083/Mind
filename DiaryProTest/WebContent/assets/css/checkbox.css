@@ -1,0 +1,98 @@
+.checks {position: relative;} 
+.checks input[type="checkbox"] { 
+    /* �떎�젣 泥댄겕諛뺤뒪�뒗 �솕硫댁뿉�꽌 �닲源� */ 
+    position: absolute; 
+    width: 1px; 
+    height: 1px; 
+    padding: 0;
+     margin: -1px; 
+     overflow: hidden; 
+     clip:rect(0,0,0,0); 
+     border: 0 } 
+     
+     .checks input[type="checkbox"] + label { 
+         display: inline-block; 
+         position: relative; 
+         cursor: pointer; 
+         -webkit-user-select: none;
+        -moz-user-select: none;
+         -ms-user-select: none; } 
+         
+    .checks input[type="checkbox"] + label:before { 
+             /* 媛�吏� 泥댄겕諛뺤뒪 */ 
+             content: ' '; 
+             display: inline-block; 
+             width: 21px; /* 泥댄겕諛뺤뒪�쓽 �꼫鍮꾨�� 吏��젙 */ 
+             height: 21px; /* 泥댄겕諛뺤뒪�쓽 �넂�씠瑜� 吏��젙 */ 
+             line-height: 21px; /* �꽭濡쒖젙�젹�쓣 �쐞�빐 �넂�씠媛믨낵 �씪移� */
+              margin: -2px 8px 0 0; 
+              text-align: center; 
+              vertical-align: middle; 
+              background: #fafafa; 
+              border: 1px solid #cacece; 
+              border-radius : 3px; 
+              box-shadow: 0px 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05); } 
+              
+        .checks input[type="checkbox"] + label:active:before, .checks input[type="checkbox"]:checked + label:active:before { 
+                  box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1); } 
+                  
+        .checkss input[type="checkbox"]:checked + label:before { 
+        /* 泥댄겕諛뺤뒪瑜� 泥댄겕�뻽�쓣�븣 */ content: '\2714'; 
+        /* 泥댄겕�몴�떆 �쑀�땲肄붾뱶 �궗�슜 */ color: black; 
+        text-shadow: 1px 1px #fff; 
+        background: #e9ecee; 
+        border-color: #adb8c0; 
+        box-shadow: 0px 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1); }
+
+        .checks.etrans input[type="checkbox"] + label {
+            padding-left: 30px;
+          }
+        .checks.etrans input[type="checkbox"] + label:before {
+            position: absolute;
+            left: 0;
+            top: 0;
+            margin-top: 0;
+            opacity: .6;
+            box-shadow: none;
+            border-color: #6cc0e5;
+            -webkit-transition: all .12s, border-color .08s;
+            transition: all .12s, border-color .08s;
+          }
+          
+          
+          
+input[type="radio"] {
+    display:none;
+}
+
+input[type="radio"] + label {
+    color: black;
+    font-family:Arial, sans-serif;
+}
+
+input[type="radio"] + label span {
+    display:inline-block;
+    width:19px;
+    height:19px;
+    margin:-2px 10px 0 0;
+    vertical-align:middle;
+    background:url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/check_radio_sheet.png) -38px top no-repeat;
+    cursor:pointer;
+}
+
+input[type="radio"]:checked + label span {
+    background:url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/check_radio_sheet.png) -57px top no-repeat;
+}  
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
