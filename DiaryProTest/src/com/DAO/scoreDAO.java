@@ -52,10 +52,10 @@ public int updateScore(scoreDTO dto) {
 		
 		try {
 			connect();
-			String sql = "insert into memberdiary (score) value(?)";
+			String sql = "update memberdiary set score=? where id=? and score is null";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, dto.getScore());
-
+			ps.setString(2, dto.getId());
 			
 			return ps.executeUpdate();
 			

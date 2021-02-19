@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.DAO.scoreDAO;
 import com.DTO.memberDTO;
 import com.DTO.scoreDTO;
 
@@ -28,6 +29,17 @@ public class scoreSystem extends HttpServlet {
 		scoreDTO sdto = new scoreDTO(id,score);
 //		일기를 쓴 날짜를 어떻게 불러오지?
 		
+		scoreDAO dao = new scoreDAO();
+		
+		int cnt = dao.updateScore(sdto);
+		
+		if(cnt>1) {
+			session.setAttribute("member", dto);
+			response.sendRedirect("main.html");	
+		}
+		else {	
+			response.sendRedirect("write.jsp");
+		}
 		
 //		id와 date와 score를 묶어서 (scoreDTO생성) 데이터베이스에 입력(scoreDAO)
 //		scoreDAO는 insert문. where id=? date=?
